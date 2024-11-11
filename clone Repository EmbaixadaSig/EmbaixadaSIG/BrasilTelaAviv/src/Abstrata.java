@@ -16,9 +16,11 @@ public abstract class Abstrata {
     private String codigo;
     private int numeroTelefone;
 
+    // Informações adicionadas 11/11/2024
+    private String entrada;
 
 
-    public Abstrata(String nome, int idade, String rg, String cpf,String login, String senha,String nacionalidade,String dataDeNascimento,String codigo,int numeroTelefone) {
+    public Abstrata(String nome, int idade, String rg, String cpf,String login, String senha,String nacionalidade,String dataDeNascimento,String codigo,int numeroTelefone, String entrada) {
         this.nome = nome;
         this.idade = idade;
         this.rg = rg;
@@ -31,8 +33,12 @@ public abstract class Abstrata {
         this.codigo = codigo;
         this.numeroTelefone = numeroTelefone;
 
+        // Informações adicionadas 11/11/2024
+        this.entrada = entrada;
 
     }
+
+
 
     public String getNome() {
         return nome;
@@ -85,5 +91,10 @@ public abstract class Abstrata {
 
     public int getNumeroTelefone() {
         return numeroTelefone;
+    }
+
+    // Informações adicionadas 11/11/2024
+    public String getEntrada() {
+        return entrada;
     }
 }

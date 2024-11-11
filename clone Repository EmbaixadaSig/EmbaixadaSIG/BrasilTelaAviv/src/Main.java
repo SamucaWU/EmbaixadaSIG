@@ -7,7 +7,8 @@ public class Main {
         System.out.println("Welcome to the Mato\n");
 
         // Intanciando a classe dadosPessoa
-        dadosPessoa dp = new dadosPessoa("",0,"","", "","","","","",0);
+
+        dadosPessoa dp = new dadosPessoa("",0,"","", "","","","","",0,"");
 
         // loop de boolean e while
         Scanner sc = new Scanner(System.in);

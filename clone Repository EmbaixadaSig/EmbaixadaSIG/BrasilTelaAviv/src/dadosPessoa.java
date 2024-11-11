@@ -12,8 +12,13 @@ import java.util.Date;
 
 import java.util.Random;
 
+
 // Extendendo da classe abstrata seus atributos
 public class dadosPessoa extends Abstrata{
+
+// chamamento da classe marcarAgendamento
+marcarAgendamento ma = new marcarAgendamento("",0,"","", "","","","","",0,"");
+
 
     // ArrayList de dadoPessoa
     List<dadosPessoa> dadosP = new ArrayList<>();
@@ -23,13 +28,13 @@ public class dadosPessoa extends Abstrata{
     private String senhaHash;
 
 // construtor
-    public dadosPessoa(String nome, int idade, String rg, String cpf,String login,String senha,String nacionalidade,String dataDeNascimento, String codigo,int numeroTelefone) {
+    public dadosPessoa(String nome, int idade, String rg, String cpf,String login,String senha,String nacionalidade,String dataDeNascimento, String codigo,int numeroTelefone, String entrada) {
 //        Atributos da outra classe
-        super(nome, idade, rg, cpf,login,senha,nacionalidade,dataDeNascimento,codigo,numeroTelefone);
+        super(nome, idade, rg, cpf,login,senha,nacionalidade,dataDeNascimento,codigo,numeroTelefone,entrada);
         setSenha(senha);  // Cria o hash e salt para a senha
 
         // Formato de data
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     }
 
@@ -79,11 +84,25 @@ public class dadosPessoa extends Abstrata{
         int idade = sc.nextInt();
         sc.nextLine();
 
-        System.out.println("Digite seu número de RG:");
+        System.out.println("Digite seu número de RG:(7 caracteres)");
         String rg = sc.nextLine();
 
-        System.out.println("Digite seu CPF:");
+        if(rg.length() != 7) {
+            System.out.println("Error. Try again.");
+            return;
+        }
+
+        rg = rg.substring(0,1)+ "." + rg.substring(1,4)+ "." + rg.substring(4,7);
+
+        System.out.println("Digite seu CPF:(11 caracteres)");
         String cpf = sc.nextLine();
+
+        if(cpf.length() != 11) {
+            System.out.println("Error. Try again");
+            return;
+        }
+
+    cpf = cpf.substring(0,3) + "." +cpf.substring(3,6)+ "." + cpf.substring(6,9) + "-" + cpf.substring(9,11);
 
         System.out.println("Digite seu login:");
         String login = sc.nextLine();
@@ -108,11 +127,101 @@ public class dadosPessoa extends Abstrata{
         System.out.println("Digite seu número de telefone:");
         int numeroTelefone = sc.nextInt();
 
+        sc.nextLine();
+
+        // Adições novas 11/11/2024
+        System.out.println("Sexo:");
+        System.out.println("1.Masculino");
+        System.out.println("2.Feminino");
+        System.out.println("3.Outro");
+        System.out.println("4.Prefiro não dizer");
+
+        // Adição de Switch case e Scanner para sexo
+
+        String sexo = sc.nextLine();
+
+        switch(sexo) {
+            case "1":
+            System.out.println("\nSexo masculino");
+            sexo = "Masculino";
+
+            break;
+
+
+
+            case "2":
+                System.out.println("\nSexo feminino");
+                sexo = "Feminino";
+
+                break;
+
+
+                case "3":
+                    System.out.println("Digite seu sexo: ");
+                    String sexo1 = sc.nextLine();
+                    sexo = sexo1;
+                    break;
+
+            case "4":
+                System.out.println("\nprefiro não dizer");
+                sexo = "Prefiro não dizer";
+
+            default:
+                System.out.println("Error. Try again.");
+                return;
+        }
+
+        // Código do País residente
+        System.out.println("País Residente: ");
+        String paisResidente = sc.nextLine();
+
+        // Estado civíl
+        System.out.println("Digite seu estado civíl: ");
+        System.out.println("1. Solteiro");
+        System.out.println("2. Casado");
+        System.out.println("3. União estável");
+        System.out.println("4. Divorciado");
+        System.out.println("5. Viúvo");
+
+        String estadoCivil = sc.nextLine();
+        // Switch case de estado civíl
+        switch (estadoCivil) {
+            case "1":
+                System.out.println("Solteiro");
+                estadoCivil = "Solteiro";
+                break;
+
+            case "2":
+                System.out.println("Casado");
+                estadoCivil = "Casado";
+                break;
+
+            case "3":
+                System.out.println("União estável");
+                estadoCivil = "União estável";
+                break;
+
+            case "4":
+                System.out.println("Divorciado");
+                estadoCivil = "Divorciado";
+                break;
+
+            case "5":
+                System.out.println("Viúvo");
+                estadoCivil = "Viúvo";
+                break;
+
+            default:
+                System.out.println("Error. Try again.");
+                return;
+        }
+
+
         System.out.println("Adicionado com Sucesso!");
 
 
         // forma de adicionar pessoas na classe dadosPessoas
-        dadosPessoa ds = new dadosPessoa(nome,idade,rg,cpf,login,senha,nacionalidade,dataDeNascimento,codigo,numeroTelefone);
+        dadosPessoa ds = new dadosPessoa(nome,idade,rg,cpf,login,senha,nacionalidade,dataDeNascimento,codigo,numeroTelefone,"");
         dadosP.add(ds);
 
     }
@@ -128,6 +237,7 @@ public class dadosPessoa extends Abstrata{
         System.out.format("Code: %s\n", getCodigo());
         System.out.format("Phone: %d\n",getNumeroTelefone());
         System.out.println("------------------------");
+
     }
 
     // Método para mostrar as informações de um usuário autenticado
@@ -155,14 +265,15 @@ public class dadosPessoa extends Abstrata{
 
                     System.out.println("How can we help you?\n");
                     System.out.println("1. Services");
-                    System.out.println("2. ");
-                    System.out.println("3.");
+                    System.out.println("2. Marcar Agendamento"); //adicionado 11/11/2024
+                    System.out.println("3. Visualizar agendamento"); //adicionado 11/11/2024
                     System.out.println("4.");
                     System.out.println("0. Return");
 
                     int escolha = sc.nextInt();
 
                     switch (escolha) {
+//                        1. Services
                         case 1:
                             System.out.println("Veja nossos serviços:");
                             System.out.println("alguma coisa");
@@ -172,11 +283,19 @@ public class dadosPessoa extends Abstrata{
 
                             System.out.println("\nQual serviço deseja acionar?");
                             break;
+//                            Marcar Agendamento
                         case 2:
+                            if(dadosP.isEmpty()) {
+                                System.out.println("Don´t have information.");
+                                return;
+                            }
+                            ma.agendamentoUsuario();
 
                             break;
-                        case 3:
 
+                        case 3:
+//                            ver agendamentos
+                            ma.show();
                             break;
                         case 4:
 

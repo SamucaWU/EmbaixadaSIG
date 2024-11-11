@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BrasilTelaAviv/BrasilTelaAviv.iml" filepath="$PROJECT_DIR$/BrasilTelaAviv/BrasilTelaAviv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/EmbaixadaSIG.iml" filepath="$PROJECT_DIR$/.idea/EmbaixadaSIG.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clone Repository EmbaixadaSig/clone Repository EmbaixadaSig.iml" filepath="$PROJECT_DIR$/clone Repository EmbaixadaSig/clone Repository EmbaixadaSig.iml" />
+    </modules>
+  </component>
+</project>

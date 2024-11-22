@@ -15,6 +15,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean real = true;
         while (real) {
+            conectDAO.ConectDAO.testConnection();
             System.out.println("\nMake your choose: ");
             System.out.println("1.Add your information");
             System.out.println("2.Show your informations and services");
